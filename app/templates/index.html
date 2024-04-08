@@ -13,8 +13,59 @@
     <h1>Chess Opening Analyzer</h1>
     <h2>Choose your preferences</h2>
     <form action="/submitform" method="post">
+        <!-- Name of player -->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
+        <br><br>
+        <!-- game type -->
+        <label for="gameType">Game Type:</label>
+        <br>
+        <input type="checkbox" id="blitz" name="gameType" value="blitz" checked>
+        <label for="blitz">Blitz</label>
+        <br>
+        <input type="checkbox" id="rapid" name="gameType" value="rapid" checked>
+        <label for="rapid">Rapid</label>
+        <br>
+        <input type="checkbox" id="bullet" name="gameType" value="bullet">
+        <label for="bullet">Bullet</label>
+        <br>
+        <input type="checkbox" id="classical" name="gameType" value="classical">
+        <label for="classical">Classical</label>
+        <br><br>
+        <!-- color -->
+        <label for="color">Color:</label>
+        <br>
+        <input type="radio" id="bothColors" name="color" value="both" checked>
+        <label for="bothColors">Both Colors</label>
+        <br>
+        <input type="radio" id="white" name="color" value="white">
+        <label for="white">White</label>
+        <br>
+        <input type="radio" id="black" name="color" value="black">
+        <label for="black">Black</label>
+        <br><br>
+        <!-- time range  add default values-->
+        <label for="timeStart">Time Range Start:</label>
+        <input type="date" id="timeStart" name="timeStart">
+        <br>
+        <label for="timeEnd">Time Range End:</label>
+        <input type="date" id="timeEnd" name="timeEnd">
+        <br><br>
+        <!-- rated or not -->
+        <label for="rated">Games Rated or Casual:</label>
+        <br>
+        <input type="radio" id="booth" name="rated" value="both" checked>
+        <label for="rated">Casual and Rated Games</label>
+        <br>
+        <input type="radio" id="rated" name="rated" value="rated">
+        <label for="rated">Rated Games Only</label>
+        <br>
+        <input type="radio" id="casual" name="rated" value="casual">
+        <label for="casual">Casual Games Only</label>
+        <br><br>
+        <!-- Opponent name -->
+        <label for="opponentName">Opponent Name:</label>
+        <input type="text" id="opponentName" name="opponentName">
         <br><br>
         <input type="submit" value="Submit">
     </form>
