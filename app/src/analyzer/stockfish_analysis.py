@@ -9,8 +9,8 @@ import time
 
 def load_game_data(file_name):
     games = pd.read_csv(f"../../../data/processed/{file_name}.csv")
-    games['moves'] = games['moves'].apply(eval)
-    games['headers'] = games['headers'].apply(eval)
+    games['moves'] = games['moves'].apply(lambda x: eval(x))
+    games['headers'] = games['headers'].apply(lambda x: eval(x))
     return games
 
 def load_evaluations_cache():
@@ -108,11 +108,10 @@ def save_results_to_json(results, file_path):
 if __name__ == "__main__":
     file_name = "apendra_games"
     stockfish_path = "C:/Users/aober/Documents/Data_Science_Studium/4Semester/BigData/stockfish/stockfish-windows-x86-64-avx2.exe"
-  #  calculated_index = "../../data/indexed_positions/final_processed_index.json"
-    depth = 15
     skill_level = 10
-    n_games = 10  #len(games)
-    max_move_number = 1
+    depth = 15
+    max_move_number = 10
+    n_games = 100  #len(games)
 
     games = load_game_data(file_name)
     evaluations_cache = load_evaluations_cache()
