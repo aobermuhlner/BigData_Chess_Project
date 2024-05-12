@@ -62,7 +62,6 @@ def build_stored_game_analysis(game, move_number, prev_evaluation, stockfish, ev
         stockfish.set_fen_position(fen)
         evaluation = stockfish.get_evaluation()
         evaluation_value = evaluation['value']
-        evaluations_cache[fen] = evaluation_value  # Updating the cache if needed
 
     row['evaluation'] = evaluation_value
     row['evaluation_change'] = evaluation_value - prev_evaluation
@@ -72,8 +71,10 @@ def build_stored_game_analysis(game, move_number, prev_evaluation, stockfish, ev
     return row, evaluation_value
 
 
-def analyze_games(chunk, max_move_number, stockfish_path, depth, skill_level, evaluations_cache):
+def analyze_games(chunk, max_move_number, stockfish_path, depth, skill_level):
     stockfish = initialize_stockfish(stockfish_path, depth, skill_level)
+    evaluations_cache = load_evaluations_cache()
+
     all_game_analysis = []
     prev_evaluation = 0
     for game in chunk.itertuples(index=False):  # Make sure to set index=False if you don't want the index within the tuple
@@ -84,12 +85,11 @@ def analyze_games(chunk, max_move_number, stockfish_path, depth, skill_level, ev
         all_game_analysis.append(pd.DataFrame(game_analysis).set_index("move_number"))
     return all_game_analysis
 
-
-def parallel_game_analysis(games, max_move_number, stockfish_path, depth, skill_level, evaluations_cache):
-    worker= 4
+def parallel_game_analysis(games, max_move_number, stockfish_path, depth, skill_level):
+    worker= 1
     chunk_size = len(games) // worker  # Or determine dynamically based on the number of CPUs
     game_chunks = [games.iloc[i:i + chunk_size] for i in range(0, len(games), chunk_size)]
-    args = [(chunk, max_move_number, stockfish_path, depth, skill_level, evaluations_cache) for chunk in game_chunks]
+    args = [(chunk, max_move_number, stockfish_path, depth, skill_level) for chunk in game_chunks]
 
     results = []
     with ProcessPoolExecutor(max_workers=worker) as executor:
@@ -108,17 +108,18 @@ def save_results_to_json(results, file_path):
 if __name__ == "__main__":
     file_name = "apendra_games"
     stockfish_path = "C:/Users/aober/Documents/Data_Science_Studium/4Semester/BigData/stockfish/stockfish-windows-x86-64-avx2.exe"
-    skill_level = 10
-    depth = 15
+
     max_move_number = 10
     n_games = 100  #len(games)
+    skill_level = 10
+    depth = 15
 
     games = load_game_data(file_name)
-    evaluations_cache = load_evaluations_cache()
-    stockfish = initialize_stockfish(stockfish_path, depth, skill_level)
+    games = games.iloc[:n_games]
+ #   stockfish = initialize_stockfish(stockfish_path, depth, skill_level)
     start_time = time.time()
   #  games_analysis = analyze_games(games, n_games, max_move_number, stockfish, evaluations_cache)
-    results = parallel_game_analysis(games, max_move_number,stockfish_path,depth, skill_level,evaluations_cache)
+    results = parallel_game_analysis(games, max_move_number,stockfish_path,depth, skill_level)
 
     duration = time.time() - start_time
     print(duration)
