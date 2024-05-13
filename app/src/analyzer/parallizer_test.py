@@ -45,7 +45,7 @@ def main():
 
     games = load_and_expand_game_data(file_name, expansion_factor)
 
-    core_settings = [1, 2, 4,5,6,7, 8]  # Test with different number of cores
+    core_settings = [8]  # Test with different number of cores
 
     for num_cores in core_settings:
         start_time = time.time()
