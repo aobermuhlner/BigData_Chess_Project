@@ -1,0 +1,27 @@
+body {
+    background-color: #EFF6E0;
+    color: #01161E;
+}
+
+h1, h3 {
+    color: #01161E;
+}
+
+.navbar {
+    background-color: #929F93;
+    color: #01161E;
+}
+
+.nav-link {
+    color: #01161E !important;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}

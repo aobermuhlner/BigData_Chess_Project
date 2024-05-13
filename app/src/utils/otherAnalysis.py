@@ -31,6 +31,30 @@ def analyze_openings(games):
     least_common = opening_counts.most_common()[:-6:-1]
     return most_common, least_common
 
+def load_json_data(filepath):
+    with open(filepath, 'r') as file:
+        return json.load(file)
+
+def analyze_move_frequencies(games):
+    """Count occurrences of each move in the games."""
+    move_counts = Counter()
+    for game in games:
+        moves = game['moves'].split()
+        move_counts.update(moves)
+    return move_counts
+
+def analyze_move_outcomes(games):
+    """Analyze the outcomes of each move."""
+    move_outcomes = {}
+    for game in games:
+        moves = game['moves'].split()
+        result = game['win_status']
+        for move in moves:
+            if move not in move_outcomes:
+                move_outcomes[move] = {'Won': 0, 'Lost': 0, 'Draw': 0}
+            move_outcomes[move][result] += 1
+    return move_outcomes
+
 if __name__ == "__main__":
     filepath = 'path_to_your_game_data.json'
     games = load_json_data(filepath)
