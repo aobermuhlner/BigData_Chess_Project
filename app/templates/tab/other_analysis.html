@@ -239,7 +239,20 @@
                 </table>
             </div>
         </div>
-    </div>  
+    </div> 
+    
+    <div class="container">
+        <h1 class="mt-5">Chess Opening Accuracy</h1>
+        <div class="form-group">
+            <label for="openingSelect">Select Opening and Player Color:</label>
+            <select class="form-control" id="openingSelect">
+                {% for combo in combinations %}
+                <option value="{{ combo.opening_name }}|{{ combo.player_color }}">{{ combo.opening_name }} - {{ combo.player_color }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <canvas id="accuracyChart" width="400" height="200"></canvas>
+    </div>
 
     <script>
         const gameResultsData = {{ gameResultsData | tojson }};
@@ -364,6 +377,62 @@
                 tableBody.appendChild(row);
             }
         }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ctx = document.getElementById('accuracyChart').getContext('2d');
+            let accuracyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Accuracy per Move',
+                        data: [],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Move Number'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Accuracy'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const fetchDataAndUpdateChart = (opening_name, player_color) => {
+                fetch('/get_accuracy_data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ opening_name, player_color })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    accuracyChart.data.labels = data.move_number;
+                    accuracyChart.data.datasets[0].data = data.accuracy;
+                    accuracyChart.update();
+                });
+            };
+
+            document.getElementById('openingSelect').addEventListener('change', function() {
+                const [opening_name, player_color] = this.value.split('|');
+                fetchDataAndUpdateChart(opening_name, player_color);
+            });
+
+            // Initial chart load
+            const initialSelection = document.getElementById('openingSelect').value.split('|');
+            fetchDataAndUpdateChart(initialSelection[0], initialSelection[1]);
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
