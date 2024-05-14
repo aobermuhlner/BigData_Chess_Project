@@ -25,3 +25,37 @@ h1, h3 {
     max-width: 500px;
     margin: auto;
 }
+
+input[type="text"], input[type="radio"], input[type="checkbox"] {
+    background-color: #EFF6E0;
+}
+
+input[type="text"]:focus, input[type="radio"]:checked, input[type="checkbox"]:checked {
+    background-color: #124559;
+    color: #FFFFFF;
+}
+
+button {
+    background-color: #EFF6E0;
+    color: #124559;
+    border: 1px solid #124559;
+}
+
+button:hover, button:focus {
+    background-color: #124559;
+    color: #FFFFFF;
+}
+
+label {
+    color: #124559;
+}
+
+.form-control {
+    background-color: #EFF6E0;
+    border: 1px solid #124559;
+}
+
+.form-control:focus {
+    border-color: #124559;
+    box-shadow: 0 0 0 0.2rem rgba(18, 69, 89, 0.25);
+}
