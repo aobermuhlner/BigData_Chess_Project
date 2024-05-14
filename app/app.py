@@ -1,49 +1,50 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, jsonify
 import requests
 import os
 import requests
 import concurrent.futures
 
 from src.utils.lichess_api import download_games
-from src.utils.otherAnalysis import analyze_game_results, analyze_game_types
+from src.utils.apendraResults import gameResultsData, gameTypesData, dataElo
+from src.utils.openings import most_played_white, highest_accuracy_white, lowest_accuracy_white, most_played_black, highest_accuracy_black, lowest_accuracy_black, most_played_variations_white, highest_accuracy_variations_white, lowest_accuracy_variations_white, most_played_variations_black, highest_accuracy_variations_black, lowest_accuracy_variations_black
 
 app = Flask(__name__)
 
-
 @app.route('/')
-def showMainpage():
-    render_template('dashboard.html')
-
-@app.route('/getGames')
 def getGames():
-    return render_template('tabs/get_games.html')
+    return render_template('tab/get_games.html')
+
+@app.route('/analyzed')
+def analysis():
+    return render_template('tab/analyzed_games.html')
 
 @app.route('/otherAnalysis')
 def otherAnalysis():
-    render_template('tabs/other_analysis.html')
+    return render_template('tab/other_analysis.html', 
+                            gameResultsData=gameResultsData, 
+                            gameTypesData=gameTypesData,
+                            most_played_white=most_played_white,
+                            highest_accuracy_white=highest_accuracy_white,
+                            lowest_accuracy_white=lowest_accuracy_white,
+                            most_played_black=most_played_black,
+                            highest_accuracy_black=highest_accuracy_black,
+                            lowest_accuracy_black=lowest_accuracy_black,
+                            most_played_variations_white=most_played_variations_white,
+                            highest_accuracy_variations_white=highest_accuracy_variations_white,
+                            lowest_accuracy_variations_white=lowest_accuracy_variations_white,
+                            most_played_variations_black=most_played_variations_black,
+                            highest_accuracy_variations_black=highest_accuracy_variations_black,
+                            lowest_accuracy_variations_black=lowest_accuracy_variations_black)
+
+@app.route('/get_elo_data')
+def get_elo_data():
+    data = dataElo
+    return jsonify(data)
 
 @app.route('/getGamesFromForm', methods=['GET'])
 def getLichesApi():
     result = download_games()
     return result 
-
-@app.route('/api/game-results')
-def game_results_api():
-    games = load_json_data('path_to_your_game_data.json')
-    result_counts = analyze_game_results(games)
-    return jsonify({'labels': list(result_counts.keys()), 'values': list(result_counts.values())})
-
-@app.route('/api/game-types')
-def game_types_api():
-    games = load_json_data('path_to_your_game_data.json')
-    type_counts = analyze_game_types(games)
-    return jsonify({'labels': list(type_counts.keys()), 'values': list(type_counts.values())})
-
-@app.route('/api/elo-rating/<player_name>')
-def elo_rating_api(player_name):
-    games = load_json_data('path_to_your_game_data.json')
-    dates, elos = analyze_elo_development(games, player_name)
-    return jsonify({'labels': list(dates), 'values': list(elos)})
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -47,8 +47,8 @@ final_grouped = pd.merge(grouped_apendra, grouped_combined, on=['player_color', 
 final_grouped = final_grouped.dropna(subset=['average_accuracy'])
 
 # Separate data for white and black
-white_data = final_grouped[final_grouped['player_color'] == 'white']
-black_data = final_grouped[final_grouped['player_color'] == 'black']
+white_data = final_grouped[final_grouped['player_color'] == 'White']
+black_data = final_grouped[final_grouped['player_color'] == 'Black']
 
 # Group by opening_base to get stats
 def get_top_openings(data):
@@ -94,6 +94,9 @@ lowest_accuracy_white=lowest_accuracy_white.to_dict('records')
 most_played_black=most_played_black.to_dict('records')
 highest_accuracy_black=highest_accuracy_black.to_dict('records')
 lowest_accuracy_black=lowest_accuracy_black.to_dict('records')
-                  
+
+print(
+    most_played_variations_white, highest_accuracy_variations_white, lowest_accuracy_variations_white
+)                  
 
 

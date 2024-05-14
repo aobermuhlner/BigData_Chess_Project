@@ -1,0 +1,357 @@
+player_color,opening_base,opening_variation,draw,loss,win,total_games,win_rate
+Black,Anderssen's Opening,,0,1,0,1,0.0
+Black,Barnes Opening,,0,1,0,1,0.0
+Black,Bird Opening,Dutch Variation,0,3,3,6,50.0
+Black,Bird Opening,,1,1,2,4,50.0
+Black,Bishop's Opening,,0,15,10,25,40.0
+Black,Bishop's Opening,Berlin Defense,1,0,0,1,0.0
+Black,Blackmar-Diemer Gambit,von Popiel Gambit,0,1,0,1,0.0
+Black,Blackmar-Diemer Gambit Declined,Vienna Defense,0,1,1,2,50.0
+Black,Caro-Kann Defense,"Panov Attack, Main Line",0,0,1,1,100.0
+Black,Center Game,Normal Variation,1,0,5,6,83.33
+Black,Center Game,,0,1,1,2,50.0
+Black,Center Game,Paulsen Attack Variation,0,1,1,2,50.0
+Black,Center Game,Berger Variation,0,1,0,1,0.0
+Black,Center Game,Halasz-McDonnell Gambit,0,1,0,1,0.0
+Black,Center Game,von der Lasa Gambit,0,0,1,1,100.0
+Black,Clemenz Opening,,0,1,0,1,0.0
+Black,Creepy Crawly Formation,Classical Defense,0,0,1,1,100.0
+Black,Danish Gambit,,0,1,5,6,83.33
+Black,Dutch Defense,,0,37,54,91,59.34
+Black,Dutch Defense,Queen's Knight Variation,1,8,13,22,59.09
+Black,Dutch Defense,Normal Variation,0,6,5,11,45.45
+Black,Dutch Defense,Raphael Variation,1,4,3,8,37.5
+Black,Dutch Defense,Staunton Gambit,0,3,1,4,25.0
+Black,Dutch Defense,"Leningrad Variation, Matulovic Variation",0,2,1,3,33.33
+Black,Dutch Defense,Hopton Attack,0,0,2,2,100.0
+Black,Dutch Defense,Rubinstein Variation,0,0,2,2,100.0
+Black,Dutch Defense,Leningrad Variation,0,0,1,1,100.0
+Black,Dutch Defense,Staunton Gambit Accepted,0,0,1,1,100.0
+Black,English Opening,"King's English Variation, Reversed Closed Sicilian",1,5,3,9,33.33
+Black,English Opening,Anglo-Dutch Defense,0,4,3,7,42.86
+Black,English Opening,King's English Variation,1,1,2,4,50.0
+Black,English Opening,The Whale,0,2,1,3,33.33
+Black,English Opening,,1,0,1,2,50.0
+Black,English Opening,"King's English Variation, Reversed Sicilian",0,1,1,2,50.0
+Black,English Opening,"King's English Variation, Two Knights Variation",0,1,1,2,50.0
+Black,English Opening,"King's English Variation, Two Knights Variation, Smyslov System",0,0,2,2,100.0
+Black,English Opening,Caro-Kann Defensive System,0,0,1,1,100.0
+Black,English Opening,"King's English Variation, Four Knights Variation, Flexible Line",0,0,1,1,100.0
+Black,English Opening,"King's English Variation, Two Knights Variation, Keres Variation",0,0,1,1,100.0
+Black,English Opening,Symmetrical Variation,0,1,0,1,0.0
+Black,Englund Gambit Declined,Reversed French,0,1,1,2,50.0
+Black,Four Knights Game,Italian Variation,0,4,5,9,55.56
+Black,Four Knights Game,,0,2,0,2,0.0
+Black,Four Knights Game,Halloween Gambit,0,0,1,1,100.0
+Black,Four Knights Game,Scotch Variation Accepted,0,1,0,1,0.0
+Black,Four Knights Game,"Spanish Variation, Classical Variation",0,0,1,1,100.0
+Black,French Defense,Knight Variation,2,1,6,9,66.67
+Black,French Defense,"Advance Variation, Paulsen Attack",0,1,1,2,50.0
+Black,French Defense,Exchange Variation,1,1,0,2,0.0
+Black,French Defense,"Exchange Variation, Monte Carlo Variation",0,1,1,2,50.0
+Black,French Defense,,0,1,0,1,0.0
+Black,French Defense,"Advance Variation, Euwe Variation",0,0,1,1,100.0
+Black,French Defense,La Bourdonnais Variation,0,1,0,1,0.0
+Black,French Defense,"Steinitz Variation, Boleslavsky Variation",0,1,0,1,0.0
+Black,Grob Opening,,0,1,0,1,0.0
+Black,Grob Opening,Grob Gambit,0,1,0,1,0.0
+Black,Hungarian Opening,,1,8,6,15,40.0
+Black,Hungarian Opening,Dutch Defense,0,2,3,5,60.0
+Black,Hungarian Opening,Reversed Alekhine,0,0,1,1,100.0
+Black,Italian Game,Giuoco Piano,0,5,13,18,72.22
+Black,Italian Game,"Giuoco Pianissimo, Italian Four Knights Variation",0,6,10,16,62.5
+Black,Italian Game,"Giuoco Pianissimo, Normal",0,8,8,16,50.0
+Black,Italian Game,"Classical Variation, Albin Gambit",0,6,5,11,45.45
+Black,Italian Game,"Giuoco Pianissimo, Canal Variation",0,5,6,11,54.55
+Black,Italian Game,Anti-Fried Liver Defense,2,3,1,6,16.67
+Black,Italian Game,"Classical Variation, Greco Gambit, Traditional Line",0,4,2,6,33.33
+Black,Italian Game,"Classical Variation, Giuoco Pianissimo",0,3,2,5,40.0
+Black,Italian Game,"Classical Variation, Giuoco Pianissimo, with d6",0,2,3,5,60.0
+Black,Italian Game,Giuoco Pianissimo,0,3,2,5,40.0
+Black,Italian Game,"Classical Variation, Center Attack",0,4,0,4,0.0
+Black,Italian Game,"Evans Gambit, Pierce Defense",0,1,3,4,75.0
+Black,Italian Game,"Giuoco Piano, Greco's Attack",0,2,2,4,50.0
+Black,Italian Game,Classical Variation,0,2,1,3,33.33
+Black,Italian Game,Jerome Gambit,0,3,0,3,0.0
+Black,Italian Game,"Scotch Gambit, Walbrodt-Baird Gambit",0,0,3,3,100.0
+Black,Italian Game,"Classical Variation, La Bourdonnais Variation",0,2,0,2,0.0
+Black,Italian Game,Deutz Gambit,0,2,0,2,0.0
+Black,Italian Game,Evans Gambit Declined,0,0,2,2,100.0
+Black,Italian Game,"Evans Gambit, Anderssen Defense",0,0,2,2,100.0
+Black,Italian Game,"Evans Gambit, Dufresne Defense",0,2,0,2,0.0
+Black,Italian Game,"Evans Gambit, Main Line",0,0,2,2,100.0
+Black,Italian Game,,0,1,0,1,0.0
+Black,Italian Game,"Classical Variation, Giuoco Pianissimo, with h6",0,1,0,1,0.0
+Black,Italian Game,"Classical Variation, Greco Gambit",0,1,0,1,0.0
+Black,Italian Game,Evans Gambit,0,0,1,1,100.0
+Black,Italian Game,"Evans Gambit, Compromised Defense",0,1,0,1,0.0
+Black,Italian Game,"Evans Gambit, Slow Variation",0,0,1,1,100.0
+Black,Italian Game,Rosentreter Gambit,0,0,1,1,100.0
+Black,Italian Game,"Two Knights Defense, Fried Liver Attack",0,1,0,1,0.0
+Black,Italian Game,"Two Knights Defense, Knight Attack, Normal Variation",0,0,1,1,100.0
+Black,Italian Game,"Two Knights Defense, Max Lange Attack, Krause Variation",0,1,0,1,0.0
+Black,Italian Game,"Two Knights Defense, Perreux Variation",0,1,0,1,0.0
+Black,King's Gambit Accepted,MacLeod Defense,0,11,7,18,38.89
+Black,King's Gambit Accepted,Schallopp Defense,0,3,0,3,0.0
+Black,King's Gambit Accepted,Rosentreter Gambit,0,0,2,2,100.0
+Black,King's Gambit Accepted,Bishop's Gambit,0,0,1,1,100.0
+Black,King's Gambit Accepted,Blachly Gambit,0,1,0,1,0.0
+Black,King's Gambit Accepted,Fischer Defense,0,0,1,1,100.0
+Black,King's Gambit Accepted,Polerio Gambit,0,0,1,1,100.0
+Black,King's Gambit Declined,Queen's Knight Defense,0,2,3,5,60.0
+Black,King's Indian Attack,,0,1,0,1,0.0
+Black,King's Knight Opening,Normal Variation,0,1,5,6,83.33
+Black,King's Knight Opening,Konstantinopolsky,0,1,1,2,50.0
+Black,King's Pawn Game,Leonardis Variation,1,11,9,21,42.86
+Black,King's Pawn Game,Napoleon Attack,0,2,2,4,50.0
+Black,King's Pawn Game,King's Head Opening,0,3,0,3,0.0
+Black,King's Pawn Game,MacLeod Attack,0,2,1,3,33.33
+Black,King's Pawn Game,Wayward Queen Attack,1,1,1,3,33.33
+Black,King's Pawn Game,Tayler Opening,0,1,1,2,50.0
+Black,King's Pawn Game,Alapin Opening,0,1,0,1,0.0
+Black,King's Pawn Game,Mengarini's Opening,1,0,0,1,0.0
+Black,King's Pawn Game,"Wayward Queen Attack, Kiddie Countergambit",0,1,0,1,0.0
+Black,Kádas Opening,,0,0,1,1,100.0
+Black,Mieses Opening,Reversed Rat,0,3,4,7,57.14
+Black,Mieses Opening,,0,3,2,5,40.0
+Black,Modern Defense,Randspringer Variation,0,1,1,2,50.0
+Black,Nimzo-Larsen Attack,Modern Variation,1,6,4,11,36.36
+Black,Nimzo-Larsen Attack,Classical Variation,0,6,3,9,33.33
+Black,Nimzo-Larsen Attack,Dutch Variation,0,0,3,3,100.0
+Black,Nimzo-Larsen Attack,,0,1,0,1,0.0
+Black,Nimzowitsch Defense,Kennedy Variation,0,1,0,1,0.0
+Black,Nimzowitsch Defense,"Kennedy Variation, Paulsen Attack",0,1,0,1,0.0
+Black,Nimzowitsch Defense,"Scandinavian Variation, Bogoljubow Variation",0,1,0,1,0.0
+Black,Polish Opening,Dutch Defense,1,0,1,2,50.0
+Black,Polish Opening,,0,0,1,1,100.0
+Black,Ponziani Opening,,0,8,5,13,38.46
+Black,Ponziani Opening,Jaenisch Counterattack,1,0,1,2,50.0
+Black,Queen's Gambit Accepted,,0,1,1,2,50.0
+Black,Queen's Gambit Accepted,"Central Variation, Alekhine System",0,0,1,1,100.0
+Black,Queen's Gambit Accepted,"Central Variation, McDonnell Defense",0,1,0,1,0.0
+Black,Queen's Gambit Accepted,Janowski-Larsen Variation,0,1,0,1,0.0
+Black,Queen's Gambit Accepted,Old Variation,0,0,1,1,100.0
+Black,Queen's Gambit Declined,Albin Countergambit,0,6,9,15,60.0
+Black,Queen's Gambit Declined,Marshall Defense,0,5,1,6,16.67
+Black,Queen's Gambit Declined,"Albin Countergambit, Normal Line",0,1,2,3,66.67
+Black,Queen's Gambit Declined,"Albin Countergambit, Lasker Trap",0,2,0,2,0.0
+Black,Queen's Gambit Declined,"Albin Countergambit, Fianchetto Variation, Bg4 Line",0,1,0,1,0.0
+Black,Queen's Gambit Declined,"Baltic Defense, Pseudo-Slav",0,1,0,1,0.0
+Black,Queen's Gambit Declined,Ragozin Defense,0,1,0,1,0.0
+Black,Queen's Pawn Game,Accelerated London System,0,6,11,17,64.71
+Black,Queen's Pawn Game,,1,5,5,11,45.45
+Black,Queen's Pawn Game,Zukertort Variation,0,1,5,6,83.33
+Black,Queen's Pawn Game,Chigorin Variation,1,2,2,5,40.0
+Black,Queen's Pawn Game,Symmetrical Variation,0,1,1,2,50.0
+Black,Queen's Pawn Game,Anti-Torre,1,0,0,1,0.0
+Black,Queen's Pawn Game,"Chigorin Variation, Alburt Defense",0,0,1,1,100.0
+Black,Queen's Pawn Game,Colle System,0,0,1,1,100.0
+Black,Queen's Pawn Game,Levitsky Attack,0,1,0,1,0.0
+Black,Queen's Pawn Game,London System,0,1,0,1,0.0
+Black,Queen's Pawn Game,"Symmetrical Variation, Pseudo-Catalan",0,1,0,1,0.0
+Black,Queen's Pawn Game,"Veresov Attack, Dutch System",0,1,0,1,0.0
+Black,Rapport-Jobava System,,0,1,1,2,50.0
+Black,Richter-Veresov Attack,,0,1,0,1,0.0
+Black,Ruy Lopez,Exchange Variation,0,3,7,10,70.0
+Black,Ruy Lopez,Morphy Defense,0,4,5,9,55.56
+Black,Ruy Lopez,"Exchange Variation, King's Bishop Variation",1,4,2,7,28.57
+Black,Ruy Lopez,"Morphy Defense, Caro Variation",0,4,2,6,33.33
+Black,Ruy Lopez,"Exchange Variation, Keres Variation",0,2,3,5,60.0
+Black,Ruy Lopez,"Morphy Defense, Anderssen Variation",0,1,2,3,66.67
+Black,Ruy Lopez,"Morphy Defense, Arkhangelsk Variation",0,1,2,3,66.67
+Black,Ruy Lopez,"Classical Variation, Central Variation",0,1,1,2,50.0
+Black,Ruy Lopez,"Morphy Defense, Classical Defense Deferred",0,1,1,2,50.0
+Black,Ruy Lopez,"Morphy Defense, Graz Variation",0,0,2,2,100.0
+Black,Ruy Lopez,Steinitz Defense,0,0,2,2,100.0
+Black,Ruy Lopez,Berlin Defense,0,0,1,1,100.0
+Black,Ruy Lopez,Classical Variation,0,1,0,1,0.0
+Black,Ruy Lopez,Closed,0,0,1,1,100.0
+Black,Réti Opening,Advance Variation,0,1,0,1,0.0
+Black,Réti Opening,Réti Accepted,0,0,1,1,100.0
+Black,Saragossa Opening,,0,1,2,3,66.67
+Black,Scandinavian Defense,Mieses-Kotroc Variation,0,1,0,1,0.0
+Black,Scotch Game,Classical Variation,0,14,13,27,48.15
+Black,Scotch Game,Lolli Variation,0,9,2,11,18.18
+Black,Scotch Game,Haxo Gambit,0,5,5,10,50.0
+Black,Scotch Game,,0,3,2,5,40.0
+Black,Scotch Game,Göring Gambit,0,1,1,2,50.0
+Black,Scotch Game,"Göring Gambit, Bardeleben Variation",0,1,1,2,50.0
+Black,Scotch Game,"Göring Gambit, Double Pawn Sacrifice",0,0,2,2,100.0
+Black,Scotch Game,Potter Variation,0,1,1,2,50.0
+Black,Scotch Game,Schmidt Variation,0,1,1,2,50.0
+Black,Scotch Game,"Göring Gambit, Main Line",0,1,0,1,0.0
+Black,Scotch Game,Mieses Variation,0,1,0,1,0.0
+Black,Scotch Game,Relfsson Gambit,0,0,1,1,100.0
+Black,Scotch Game,"Scotch Gambit, Sarratt Variation",1,0,0,1,0.0
+Black,Semi-Slav Defense,,0,2,0,2,0.0
+Black,Sicilian Defense,,0,1,1,2,50.0
+Black,Sicilian Defense,Bowdler Attack,0,0,1,1,100.0
+Black,Sicilian Defense,Closed,0,1,0,1,0.0
+Black,Sicilian Defense,"Delayed Alapin Variation, with d6",0,1,0,1,0.0
+Black,Sicilian Defense,Mengarini Variation,0,0,1,1,100.0
+Black,Sicilian Defense,Old Sicilian,0,0,1,1,100.0
+Black,Sicilian Defense,Smith-Morra Gambit,0,1,0,1,0.0
+Black,Slav Defense,,0,2,0,2,0.0
+Black,Slav Defense,Three Knights Variation,0,1,1,2,50.0
+Black,Three Knights Opening,,1,8,11,20,55.0
+Black,Van Geet Opening,Reversed Nimzowitsch,0,1,1,2,50.0
+Black,Van't Kruijs Opening,,0,6,11,17,64.71
+Black,"Vienna Gambit, with Max Lange Defense",Knight Variation,0,2,1,3,33.33
+Black,"Vienna Gambit, with Max Lange Defense",,0,1,0,1,0.0
+Black,Vienna Game,Max Lange Defense,0,16,10,26,38.46
+Black,Vienna Game,"Stanley Variation, Meitner-Mieses Gambit",0,1,1,2,50.0
+Black,Vienna Game,Anderssen Defense,0,1,0,1,0.0
+Black,Vienna Game,"Stanley Variation, Reversed Spanish",0,1,0,1,0.0
+Black,Vienna Game,Vienna Gambit,0,1,0,1,0.0
+Black,Zukertort Opening,,0,0,2,2,100.0
+Black,Zukertort Opening,Black Mustang Defense,0,1,1,2,50.0
+Black,Zukertort Opening,Dutch Variation,0,1,1,2,50.0
+Black,Zukertort Opening,Old Indian Attack,0,1,1,2,50.0
+White,Alekhine Defense,,0,3,2,5,40.0
+White,Alekhine Defense,Krejcik Variation,0,0,1,1,100.0
+White,Alekhine Defense,"Modern Variation, Schmid Variation",0,1,0,1,0.0
+White,Alekhine Defense,Normal Variation,0,1,0,1,0.0
+White,Alekhine Defense,Scandinavian Variation,0,1,0,1,0.0
+White,Alekhine Defense,"Scandinavian Variation, Geschev Gambit",0,1,0,1,0.0
+White,Benoni Defense,Benoni Gambit Accepted,0,1,0,1,0.0
+White,Bird Opening,,0,1,0,1,0.0
+White,Bishop's Opening,Vienna Hybrid,0,1,1,2,50.0
+White,Blackmar-Diemer Gambit Declined,O'Kelly Defense,0,1,0,1,0.0
+White,Caro-Kann Defense,,0,10,16,26,61.54
+White,Caro-Kann Defense,Classical Variation,0,5,9,14,64.29
+White,Caro-Kann Defense,Tartakower Variation,1,5,8,14,57.14
+White,Caro-Kann Defense,Main Line,0,2,3,5,60.0
+White,Caro-Kann Defense,Maróczy Variation,0,4,1,5,20.0
+White,Caro-Kann Defense,Campomanes Attack,1,1,2,4,50.0
+White,Caro-Kann Defense,Exchange Variation,1,2,0,3,0.0
+White,Caro-Kann Defense,Bronstein-Larsen Variation,0,2,0,2,0.0
+White,Caro-Kann Defense,Karpov Variation,0,1,0,1,0.0
+White,Carr Defense,,0,1,0,1,0.0
+White,Catalan Opening,Closed,0,0,1,1,100.0
+White,Czech Defense,,0,0,2,2,100.0
+White,English Defense,,0,0,1,1,100.0
+White,English Opening,"King's English Variation, Two Knights Variation, Smyslov System",0,0,1,1,100.0
+White,Four Knights Game,Italian Variation,0,4,14,18,77.78
+White,Four Knights Game,Spanish Variation,0,1,2,3,66.67
+White,Four Knights Game,"Spanish Variation, Classical Variation",0,2,1,3,33.33
+White,Four Knights Game,"Spanish Variation, Double Spanish",0,0,1,1,100.0
+White,French Defense,Queen's Knight,2,22,23,47,48.94
+White,French Defense,Exchange Variation,1,9,3,13,23.08
+White,French Defense,Normal Variation,0,4,3,7,42.86
+White,French Defense,Knight Variation,0,2,2,4,50.0
+White,French Defense,Franco-Sicilian Defense,0,0,3,3,100.0
+White,French Defense,,0,2,0,2,0.0
+White,French Defense,Advance Variation,0,0,1,1,100.0
+White,French Defense,"Advance Variation, Paulsen Attack",0,0,1,1,100.0
+White,French Defense,"Classical Variation, Delayed Exchange Variation",0,0,1,1,100.0
+White,French Defense,Mediterranean Defense,0,0,1,1,100.0
+White,French Defense,Perseus Gambit,0,0,1,1,100.0
+White,French Defense,Réti-Spielmann Attack,0,1,0,1,0.0
+White,French Defense,Steinitz Variation,0,1,0,1,0.0
+White,French Defense,"Steinitz Variation, Boleslavsky Variation",0,1,0,1,0.0
+White,Indian Defense,Anti-Nimzo-Indian,0,1,1,2,50.0
+White,Italian Game,"Giuoco Pianissimo, Italian Four Knights Variation",2,7,8,17,47.06
+White,Italian Game,"Giuoco Pianissimo, Canal Variation",1,2,3,6,50.0
+White,Italian Game,Giuoco Pianissimo,0,1,3,4,75.0
+White,Italian Game,Paris Defense,0,2,1,3,33.33
+White,Italian Game,,0,2,0,2,0.0
+White,Italian Game,Anti-Fried Liver Defense,0,2,0,2,0.0
+White,Italian Game,Giuoco Piano,0,2,0,2,0.0
+White,Italian Game,"Two Knights Defense, Fritz Variation",0,1,0,1,0.0
+White,King's Gambit Accepted,"Bishop's Gambit, Bogoljubow Defense",0,1,0,1,0.0
+White,King's Knight Opening,,0,0,1,1,100.0
+White,King's Pawn Game,Busch-Gass Gambit,0,1,5,6,83.33
+White,King's Pawn Game,Gunderam Gambit,0,1,0,1,0.0
+White,Modern Defense,,0,11,13,24,54.17
+White,Modern Defense,Standard Line,0,7,6,13,46.15
+White,Modern Defense,Three Pawns Attack,0,2,1,3,33.33
+White,Modern Defense,Pseudo-Austrian Attack,0,2,0,2,0.0
+White,Modern Defense,Two Knights Variation,0,2,0,2,0.0
+White,Modern Defense,"Mongredien Defense, with Nc3",0,1,0,1,0.0
+White,Modern Defense,Standard Defense,0,0,1,1,100.0
+White,Nimzowitsch Defense,,0,1,1,2,50.0
+White,Owen Defense,,1,16,5,22,22.73
+White,Owen Defense,Smith Gambit,0,0,1,1,100.0
+White,Philidor Defense,,0,5,6,11,54.55
+White,Pirc Defense,,1,8,13,22,59.09
+White,Pirc Defense,Classical Variation,0,3,3,6,50.0
+White,Pirc Defense,Austrian Attack,0,0,2,2,100.0
+White,Pirc Defense,"Austrian Attack, Unzicker Attack",0,2,0,2,0.0
+White,Pirc Defense,"Austrian Attack, Weiss Variation",0,2,0,2,0.0
+White,Pirc Defense,"Austrian Attack, Dragon Formation",0,1,0,1,0.0
+White,Pirc Defense,"Austrian Attack, Kurajica Variation",0,1,0,1,0.0
+White,Pirc Defense,"Austrian Attack, Ljubojevic Variation",0,1,0,1,0.0
+White,Ponziani Opening,Neumann Gambit,0,0,1,1,100.0
+White,Queen's Gambit Declined,"Austrian Attack, Salvio Countergambit",0,0,1,1,100.0
+White,Queen's Pawn Game,Chigorin Variation,0,1,0,1,0.0
+White,Queen's Pawn Game,Modern Defense,0,1,0,1,0.0
+White,Rat Defense,Small Center Defense,1,2,0,3,0.0
+White,Rat Defense,Antal Defense,0,0,1,1,100.0
+White,Russian Game,Three Knights Game,0,4,2,6,33.33
+White,Ruy Lopez,Steinitz Defense,0,3,3,6,50.0
+White,Ruy Lopez,Berlin Defense,0,0,1,1,100.0
+White,Ruy Lopez,Classical Variation,0,0,1,1,100.0
+White,Ruy Lopez,"Exchange Variation, Keres Variation",0,0,1,1,100.0
+White,Scandinavian Defense,Valencian Variation,0,18,24,42,57.14
+White,Scandinavian Defense,Main Line,0,11,5,16,31.25
+White,Scandinavian Defense,Mieses-Kotroc Variation,1,3,9,13,69.23
+White,Scandinavian Defense,,1,6,5,12,41.67
+White,Scandinavian Defense,Gubinsky-Melts Defense,1,6,1,8,12.5
+White,Scandinavian Defense,Modern Variation,0,4,4,8,50.0
+White,Scandinavian Defense,Blackburne Gambit,0,2,2,4,50.0
+White,Scandinavian Defense,Boehnke Gambit,1,2,1,4,25.0
+White,Scandinavian Defense,"Valencian Variation, Main Line",0,0,2,2,100.0
+White,Scandinavian Defense,Bronstein Variation,0,0,1,1,100.0
+White,Scandinavian Defense,Icelandic-Palme Gambit,0,1,0,1,0.0
+White,Scandinavian Defense,"Main Line, Mieses Variation",0,1,0,1,0.0
+White,Scandinavian Defense,Marshall Variation,0,0,1,1,100.0
+White,Scandinavian Defense,"Portuguese Gambit, Classical Variation",0,1,0,1,0.0
+White,Sicilian Defense,Alapin Variation,4,25,45,74,60.81
+White,Sicilian Defense,Closed,1,8,12,21,57.14
+White,Sicilian Defense,Old Sicilian,0,7,5,12,41.67
+White,Sicilian Defense,"Alapin Variation, Barmen Defense",0,2,7,9,77.78
+White,Sicilian Defense,"Closed, Traditional",0,2,1,3,33.33
+White,Sicilian Defense,"Delayed Alapin Variation, with d6",0,2,1,3,33.33
+White,Sicilian Defense,"Accelerated Dragon, Exchange Variation",0,0,2,2,100.0
+White,Sicilian Defense,Bowdler Attack,0,1,1,2,50.0
+White,Sicilian Defense,"Delayed Alapin Variation, with e6",0,1,1,2,50.0
+White,Sicilian Defense,French Variation,0,0,2,2,100.0
+White,Sicilian Defense,Hyperaccelerated Dragon,0,1,1,2,50.0
+White,Sicilian Defense,Löwenthal Variation,0,0,2,2,100.0
+White,Sicilian Defense,Modern Variations,0,1,1,2,50.0
+White,Sicilian Defense,Taimanov Variation,0,2,0,2,0.0
+White,Sicilian Defense,,0,0,1,1,100.0
+White,Sicilian Defense,"Accelerated Dragon, Modern Variation",0,1,0,1,0.0
+White,Sicilian Defense,"Alapin Variation, Barmen Defense, Central Exchange",0,0,1,1,100.0
+White,Sicilian Defense,"Alapin Variation, Smith-Morra Declined",0,1,0,1,0.0
+White,Sicilian Defense,Drazic Variation,0,1,0,1,0.0
+White,Sicilian Defense,Franco-Sicilian Variation,0,1,0,1,0.0
+White,Sicilian Defense,Grand Prix Attack,0,1,0,1,0.0
+White,Sicilian Defense,"Lasker-Pelikan Variation, Retreat Variation",0,0,1,1,100.0
+White,Sicilian Defense,"Modern Variations, Main Line",0,1,0,1,0.0
+White,Sicilian Defense,Najdorf Variation,0,0,1,1,100.0
+White,Sicilian Defense,"O'Kelly Variation, Normal System, Zagorovsky Line",0,1,0,1,0.0
+White,Sicilian Defense,Open,0,1,0,1,0.0
+White,Sicilian Defense,Pin Variation,0,1,0,1,0.0
+White,Sicilian Defense,"Smith-Morra Gambit Declined, Center Formation",0,1,0,1,0.0
+White,Slav Defense,,0,0,1,1,100.0
+White,St. George Defense,,0,1,0,1,0.0
+White,Tarrasch Defense,,0,0,1,1,100.0
+White,Three Knights Opening,,0,4,2,6,33.33
+White,Van't Kruijs Opening,,0,1,0,1,0.0
+White,"Vienna Gambit, with Max Lange Defense",,0,1,0,1,0.0
+White,"Vienna Gambit, with Max Lange Defense","Steinitz Gambit, Paulsen Defense",0,1,0,1,0.0
+White,Vienna Game,,2,28,24,54,44.44
+White,Vienna Game,Max Lange Defense,1,19,32,52,61.54
+White,Vienna Game,Vienna Gambit,1,17,17,35,48.57
+White,Vienna Game,"Stanley Variation, Three Knights Variation",0,11,13,24,54.17
+White,Vienna Game,Anderssen Defense,0,9,6,15,40.0
+White,Vienna Game,"Stanley Variation, Meitner-Mieses Gambit",0,1,11,12,91.67
+White,Vienna Game,"Vienna Gambit, Main Line",0,6,2,8,25.0
+White,Vienna Game,Omaha Gambit,1,2,2,5,40.0
+White,Vienna Game,Stanley Variation,0,3,2,5,40.0
+White,Vienna Game,"Stanley Variation, Reversed Spanish",0,3,0,3,0.0
+White,Vienna Game,"Vienna Gambit, Paulsen Attack",0,1,1,2,50.0
+White,Ware Defense,,0,0,1,1,100.0
+White,Zukertort Opening,Tennison Gambit,0,1,1,2,50.0
+White,Zukertort Opening,Lemberger Gambit,0,0,1,1,100.0
