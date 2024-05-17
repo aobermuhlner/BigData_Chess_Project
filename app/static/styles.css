@@ -27,21 +27,23 @@ h1, h3 {
 }
 
 input[type="text"], input[type="radio"], input[type="checkbox"] {
-    background-color: #EFF6E0;
+    background-color: #124559;
+    color: #EFF6E0;
+    border: 1px solid #124559;
 }
 
 input[type="text"]:focus, input[type="radio"]:checked, input[type="checkbox"]:checked {
     background-color: #124559;
-    color: #FFFFFF;
+    color: #EFF6E0;
 }
 
-button {
-    background-color: #EFF6E0;
-    color: #124559;
+.btn {
+    background-color: #124559;
+    color: #EFF6E0;
     border: 1px solid #124559;
 }
 
-button:hover, button:focus {
+.btn:hover, .btn:focus {
     background-color: #124559;
     color: #FFFFFF;
 }
@@ -52,7 +54,7 @@ label {
 
 .form-control {
     background-color: #EFF6E0;
-    border: 1px solid #124559;
+    border: 2px solid #124559;
 }
 
 .form-control:focus {

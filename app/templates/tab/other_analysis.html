@@ -14,12 +14,20 @@
         }
     </style>
     <script>
-        function toggleVariations(id) {
-            var element = document.getElementById(id);
-            if (element.style.display === "none") {
-                element.style.display = "block";
-            } else {
-                element.style.display = "none";
+        function toggleVariations(openingBase, variationData) {
+            const tableBody = document.getElementById('variations-tbody');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            for (let i = 0; i < variationData.length; i++) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${openingBase}</td>
+                    <td>${variationData[i][0]}</td>
+                    <td>${variationData[i][2]}</td>
+                    <td>${variationData[i][3]}</td>
+                    <td>${variationData[i][1]}</td>
+                `;
+                tableBody.appendChild(row);
             }
         }
     </script>
@@ -46,11 +54,11 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h3>Game Results</h3>
+                <h3>Game Results in Percentage</h3>
                 <canvas id="gameResultsChart"></canvas>
             </div>
             <div class="col-md-6">
-                <h3>Game Types</h3>
+                <h3>Games Played per Game Type</h3>
                 <canvas id="gameTypesChart"></canvas>
             </div>
             <div class="col-md-12">
@@ -59,100 +67,193 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container mt-5">
         <h1>Chess Opening Statistics</h1>
 
-        <h2>Most Played Openings (White)</h2>
-        <ul>
-            {% for opening in most_played_white %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_most_played_white')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_most_played_white" class="variations">
-                    {% for variation in most_played_variations_white[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Most Played Openings (White)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['most_played_white'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['most_played_variations_white']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-        <h2>Highest Accuracy Openings (White)</h2>
-        <ul>
-            {% for opening in highest_accuracy_white %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_highest_accuracy_white')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_highest_accuracy_white" class="variations">
-                    {% for variation in highest_accuracy_variations_white[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+            <div class="col-md-6">
+                <h3>Most Played Openings (Black)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['most_played_black'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['most_played_variations_black']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <h2>Lowest Accuracy Openings (White)</h2>
-        <ul>
-            {% for opening in lowest_accuracy_white %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_lowest_accuracy_white')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_lowest_accuracy_white" class="variations">
-                    {% for variation in lowest_accuracy_variations_white[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Highest Accuracy Openings (White)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['highest_accuracy_white'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['highest_accuracy_variations_white']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-        <h2>Most Played Openings (Black)</h2>
-        <ul>
-            {% for opening in most_played_black %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_most_played_black')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_most_played_black" class="variations">
-                    {% for variation in most_played_variations_black[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+            <div class="col-md-6">
+                <h3>Highest Accuracy Openings (Black)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['highest_accuracy_black'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['highest_accuracy_variations_black']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <h2>Highest Accuracy Openings (Black)</h2>
-        <ul>
-            {% for opening in highest_accuracy_black %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_highest_accuracy_black')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_highest_accuracy_black" class="variations">
-                    {% for variation in highest_accuracy_variations_black[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Lowest Accuracy Openings (White)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['lowest_accuracy_white'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['lowest_accuracy_variations_white']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-        <h2>Lowest Accuracy Openings (Black)</h2>
-        <ul>
-            {% for opening in lowest_accuracy_black %}
-            <li>
-                <span onclick="toggleVariations('{{ opening['opening_base'] }}_lowest_accuracy_black')">{{ opening['opening_base'] }}</span> 
-                - Win Rate: {{ opening['win_rate'] }}%, Average Accuracy: {{ opening['average_accuracy'] }}%
-                <ul id="{{ opening['opening_base'] }}_lowest_accuracy_black" class="variations">
-                    {% for variation in lowest_accuracy_variations_black[opening['opening_base']] %}
-                    <li>{{ variation[0] }} - Win Rate: {{ variation[1] }}%, Accuracy: {{ variation[2] }}%</li>
-                    {% endfor %}
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
+            <div class="col-md-6">
+                <h3>Lowest Accuracy Openings (Black)</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Opening</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for opening in data['lowest_accuracy_black'] %}
+                        <tr onclick="toggleVariations('{{ opening['opening_base'] }}', data['lowest_accuracy_variations_black']['{{ opening['opening_base'] }}'])">
+                            <td>{{ opening['opening_base'] }}</td>
+                            <td>{{ opening['win_rate']|round(2) }}</td>
+                            <td>{{ opening['average_accuracy']|round(2) }}</td>
+                            <td>{{ opening['total_games'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Opening Variations</h3>
+                <table class="table table-striped" id="variations-table">
+                    <thead>
+                        <tr>
+                            <th>Opening Base</th>
+                            <th>Variation</th>
+                            <th>Win Rate (%)</th>
+                            <th>Average Accuracy (%)</th>
+                            <th>Total Games</th>
+                        </tr>
+                    </thead>
+                    <tbody id="variations-tbody">
+                        <!-- Variations will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> 
+
+    <div class="container">
+        <h1 class="mt-5">Chess Opening Accuracy</h1>
+        <div class="form-group">
+            <label for="openingSelect">Select Opening and Player Color:</label>
+            <select class="form-control" id="openingSelect">
+                {% for combo in combinations %}
+                <option value="{{ combo.opening_name }}|{{ combo.player_color }}">{{ combo.opening_name }} - {{ combo.player_color }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <canvas id="accuracyChart" width="400" height="200"></canvas>
     </div>
-    
+
     <script>
         const gameResultsData = {{ gameResultsData | tojson }};
         const gameTypesData = {{ gameTypesData | tojson }};
@@ -171,7 +272,7 @@
                         text: data.datasets[0].label
                     }
                 },
-                ...options
+                ...options,
             }
         });
 
@@ -246,6 +347,11 @@
                                     display: true,
                                     text: 'Elo Ratings Over Time'
                                 }
+                            },
+                            elements: {
+                                point: {
+                                    radius: 0 // Remove points
+                                }
                             }
                         }
                     });
@@ -257,6 +363,80 @@
 
             const gameTypesCtx = document.getElementById('gameTypesChart').getContext('2d');
             new Chart(gameTypesCtx, config(gameTypesData, 'bar', {indexAxis: 'y'}));
+        });
+        const data = {{ data | tojson }};
+        
+        function toggleVariations(openingBase, variationData) {
+            const tableBody = document.getElementById('variations-tbody');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            for (let i = 0; i < variationData.length; i++) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${openingBase}</td>
+                    <td>${variationData[i][0]}</td>
+                    <td>${parseFloat(variationData[i][2]).toFixed(2)}</td>
+                    <td>${parseFloat(variationData[i][3]).toFixed(2)}</td>
+                    <td>${variationData[i][1]}</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ctx = document.getElementById('accuracyChart').getContext('2d');
+            let accuracyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Accuracy per Move',
+                        data: [],
+                        borderColor: '#124559',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Move Number'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Accuracy'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const fetchDataAndUpdateChart = (opening_name, player_color) => {
+                fetch('/get_accuracy_data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ opening_name, player_color })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    accuracyChart.data.labels = data.move_number;
+                    accuracyChart.data.datasets[0].data = data.accuracy;
+                    accuracyChart.update();
+                });
+            };
+
+            document.getElementById('openingSelect').addEventListener('change', function() {
+                const [opening_name, player_color] = this.value.split('|');
+                fetchDataAndUpdateChart(opening_name, player_color);
+            });
+
+            // Initial chart load
+            const initialSelection = document.getElementById('openingSelect').value.split('|');
+            fetchDataAndUpdateChart(initialSelection[0], initialSelection[1]);
         });
     </script>
 
