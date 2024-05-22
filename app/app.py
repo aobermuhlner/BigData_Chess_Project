@@ -1,15 +1,16 @@
 from flask import Flask, render_template, jsonify, request
-
-from src.utils.lichess_api import download_games
+import traceback
+from src.utils.lichess_api import download_and_measure_games_multithreaded
 from src.utils.apendraResults import gameResultsData, gameTypesData, dataElo
 import src.utils.openings as openings
 from src.utils.accuracyGraph import load_and_aggregate_data
+from datetime import date
 
 app = Flask(__name__)
 
 @app.route('/')
 def getGames():
-    return render_template('tab/get_games.html')
+    return render_template('tab/get_games.html', today=date.today().isoformat())
 
 @app.route('/analyzed')
 def analysis():
@@ -32,9 +33,23 @@ def get_elo_data():
     return jsonify(data)
 
 @app.route('/getGamesFromForm', methods=['GET'])
-def getLichesApi():
-    result = download_games()
-    return result 
+def get_games():
+    try:
+        # Extract parameters from request
+        username = request.args.get('username')
+        since = request.args.get('since')
+        until = request.args.get('until')
+        color = request.args.get('color')
+        rated = request.args.get('rated')
+        game_types = request.args.getlist('game_type')
+
+        # Call the function to download and measure games
+        response_data = download_and_measure_games_multithreaded(username, since, until, color, rated, game_types)
+        return jsonify(response_data)
+    except Exception as e:
+        # Log the exception and return an error message
+        traceback.print_exc()
+        return jsonify({'error': 'Failed to fetch games', 'details': str(e)}), 500
 
 @app.route('/get_accuracy_data', methods=['POST'])
 def get_accuracy_data():

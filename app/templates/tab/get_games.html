@@ -32,6 +32,14 @@
                     <label for="username" class="form-label">Username:</label>
                     <input type="text" id="username" name="username" class="form-control" required>
                 </div>
+                <div class="col-3">
+                    <label for="sinceDate" class="form-label">Start Date:</label>
+                    <input type="date" id="sinceDate" name="since" class="form-control" value="2016-01-01" required>
+                </div>
+                <div class="col-3">
+                    <label for="untilDate" class="form-label">End Date:</label>
+                    <input type="date" id="untilDate" name="until" class="form-control" value="{{ today }}" required>
+                </div>
             </div>
 
             <div class="row">
@@ -80,7 +88,7 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="game_type" value="rapid" id="rapid" checked>
-                    <label class="form-check-label" for="rapid">Rapid</label>
+                    <label the="form-check-label" for="rapid">Rapid</label>
                 </div>
             </div>
 

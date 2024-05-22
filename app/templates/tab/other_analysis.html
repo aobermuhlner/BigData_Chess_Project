@@ -221,7 +221,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <h3>Opening Variations</h3>
                 <table class="table table-striped" id="variations-table">
                     <thead>
@@ -238,21 +238,20 @@
                     </tbody>
                 </table>
             </div>
+            <div class="container col-md-6">
+                <h1 class="mt-5">Chess Opening Accuracy</h1>
+                <div class="form-group">
+                    <label for="openingSelect">Select Opening and Player Color:</label>
+                    <select class="form-control" id="openingSelect">
+                        {% for combo in combinations %}
+                        <option value="{{ combo.opening_name }}|{{ combo.player_color }}">{{ combo.opening_name }} - {{ combo.player_color }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <canvas id="accuracyChart" width="400" height="200"></canvas>
+            </div>    
         </div>
     </div> 
-
-    <div class="container">
-        <h1 class="mt-5">Chess Opening Accuracy</h1>
-        <div class="form-group">
-            <label for="openingSelect">Select Opening and Player Color:</label>
-            <select class="form-control" id="openingSelect">
-                {% for combo in combinations %}
-                <option value="{{ combo.opening_name }}|{{ combo.player_color }}">{{ combo.opening_name }} - {{ combo.player_color }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <canvas id="accuracyChart" width="400" height="200"></canvas>
-    </div>
 
     <script>
         const gameResultsData = {{ gameResultsData | tojson }};
