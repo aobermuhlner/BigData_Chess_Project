@@ -183,6 +183,6 @@ if __name__ == "__main__":
     start_time = time.time()
 
     results = parallel_game_analysis(games, stockfish_path, depth, skill_level, 4)
-
-    json.dump(results, indent=4)
+    print(results)
+   # json.dump(results, indent=4)
 

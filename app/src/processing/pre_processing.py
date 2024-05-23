@@ -4,9 +4,6 @@ def shortenGameMeta(games, player_name='Apendra'):
     for game in games:
         if game.get('variant') == 'standard':
             moves_list = game.get('moves', '').split()
-            midgame_index = game.get('division', {}).get('middle', 0)
-            # Ensure we slice up to midgame + 8 moves
-            moves_up_to_midgame_plus_8 = ' '.join(moves_list[:midgame_index + 8])
 
             # Determine the game outcome for the player
             if game.get('winner'):
@@ -35,10 +32,23 @@ def shortenGameMeta(games, player_name='Apendra'):
                 'ECO': game.get('opening', {}).get('eco', 'Unknown'),
                 'opening_name': game.get('opening', {}).get('name', 'Unknown'),
                 'game_type': f"{game.get('variant')} - {game.get('speed')} - {game.get('perf')}",
-                'moves': moves_up_to_midgame_plus_8,
-                'division': game.get('division', {}),
+                'moves':  game.get('moves'),
                 'game_date_unix': game_date_unix  # Unix timestamp of the game creation
             }
             games_shorter.append(game_meta)
 
     return games_shorter
+
+def test_shortenGameMeta():
+    import json
+    # Load games data from a file path
+    with open('../../../data/pipeline_test/unprocessed_games.json', 'r') as file:
+        data = json.load(file)
+        games = data['games']  # Accessing the list of games correctly
+
+
+    shortened_games = shortenGameMeta(games, 'Apendra')
+    with open('../../../data/pipeline_test/processed_games.json', 'w') as outfile:
+        json.dump(shortened_games, outfile, indent=4)
+    # Print the output for inspection
+    print(json.dumps(shortened_games[:3], indent=4)) 
