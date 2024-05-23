@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import traceback
 from src.utils.lichess_api import download_and_measure_games_multithreaded
-from src.utils.apendraResults import gameResultsData, gameTypesData, dataElo
+from src.utils.apendraResults import process_combined_data, process_apendra_data
 import src.utils.openings as openings
 from src.utils.accuracyGraph import load_and_aggregate_data
 from datetime import date
@@ -14,23 +14,84 @@ def getGames():
 
 @app.route('/analyzed')
 def analysis():
-    return render_template('tab/analyzed_games.html')
 
-@app.route('/otherAnalysis')
-def otherAnalysis():
     data = openings.process_openings()
     _, unique_combinations = load_and_aggregate_data()
     combinations = unique_combinations.to_dict(orient='records')
-    return render_template('tab/other_analysis.html', 
+    return render_template('tab/analyzed_games.html', 
                             gameResultsData=gameResultsData, 
                             gameTypesData=gameTypesData,
                             data=data,
                             combinations=combinations)
 
+@app.route('/otherAnalysis')
+def otherAnalysis():
+    # Define file paths
+    combined_data_file_path = './data/processed/combined_games_data_with_pgn_opening.csv'
+    apendra_data_file_path = './data/processed/apendra_games.csv'
+
+    # Process combined data
+    combined_data_results = process_combined_data(combined_data_file_path)
+
+    apendra_data_results = process_apendra_data(apendra_data_file_path)
+
+    # Construct gameResultsData and gameTypesData
+    results_count = apendra_data_results['gameResultsData']['datasets'][0]['data']
+    labels = apendra_data_results['gameResultsData']['labels']
+    gameResultsData = {
+        'labels': labels,
+        'datasets': [{
+            'data': results_count,
+            'backgroundColor': ['#01161E', '#124559', '#598392']
+        }]
+    }
+
+    game_types_counts = {
+        'Bullet': len(apendra_data_results['dataElo']['bullet']['data']),
+        'Blitz': len(apendra_data_results['dataElo']['blitz']['data']),
+        'Rapid': len(apendra_data_results['dataElo']['rapid']['data'])
+    }
+    gameTypesData = {
+        'labels': list(game_types_counts.keys()),
+        'datasets': [{
+            'label': 'Game Type',
+            'data': list(game_types_counts.values()),
+            'backgroundColor': ['#01161E', '#124559', '#598392']
+        }]
+    }
+
+    mostPlayedOpeningsData = combined_data_results['mostPlayedOpeningsData']
+    leastPlayedOpeningsData = combined_data_results['leastPlayedOpeningsData']
+    mostPlayedEcoData = combined_data_results['mostPlayedEcoData']
+    leastPlayedEcoData = combined_data_results['leastPlayedEcoData']
+
+    # Assuming `process_openings` and `load_and_aggregate_data` are existing functions
+    # from the `openings` module you mentioned.
+    data = openings.process_openings()
+    _, unique_combinations = load_and_aggregate_data()
+    combinations = unique_combinations.to_dict(orient='records')
+
+    return render_template('tab/other_analysis.html', 
+                           gameResultsData=gameResultsData, 
+                           gameTypesData=gameTypesData,
+                           mostPlayedOpeningsData=mostPlayedOpeningsData,
+                           leastPlayedOpeningsData=leastPlayedOpeningsData,
+                           mostPlayedEcoData=mostPlayedEcoData,
+                           leastPlayedEcoData=leastPlayedEcoData,
+                           data=data,
+                           combinations=combinations)
 @app.route('/get_elo_data')
 def get_elo_data():
-    data = dataElo
-    return jsonify(data)
+    # Define file path for Apendra data
+    apendra_data_file_path = './data/processed/apendra_games.csv'
+
+    # Process apendra data
+    apendra_data_results = process_apendra_data(apendra_data_file_path)
+
+    # Get the dataElo part
+    dataElo = apendra_data_results['dataElo']
+
+    return jsonify(dataElo)
 
 @app.route('/getGamesFromForm', methods=['GET'])
 def get_games():
