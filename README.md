@@ -1,4 +1,4 @@
-```markdown
+
 # Chess Opening Analyzer
 
 ## Overview
