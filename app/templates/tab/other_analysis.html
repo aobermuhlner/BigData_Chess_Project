@@ -264,7 +264,7 @@
                 responsive: true,
                 plugins: { 
                     legend: {
-                    display: false,
+                        display: false,
                     },
                     title: {
                         display: true,
@@ -274,13 +274,37 @@
                 ...options,
             }
         });
+        const gameResultsCtx = document.getElementById('gameResultsChart').getContext('2d');
+            new Chart(gameResultsCtx, config(gameResultsData, 'bar', {
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Game Results in Percentage'
+                    }
+                }
+            }));
+            const gameTypesCtx = document.getElementById('gameTypesChart').getContext('2d');
+            new Chart(gameTypesCtx, config(gameTypesData, 'bar', {
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Games Played per Game Type'
+                    }
+                }
+            }));
 
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/get_elo_data')
                 .then(response => response.json())
                 .then(data => {
-
-                    // Function to format dates to a more readable format if necessary
                     const formatDates = (dateArray) => dateArray.map(date => new Date(date));
 
                     const blitzDates = formatDates(data.blitz.labels);
@@ -349,19 +373,13 @@
                             },
                             elements: {
                                 point: {
-                                    radius: 0 // Remove points
+                                    radius: 0
                                 }
                             }
                         }
                     });
                 })
-                .catch(error => console.error('Error fetching data:', error));
-
-            const gameResultsCtx = document.getElementById('gameResultsChart').getContext('2d');
-            new Chart(gameResultsCtx, config(gameResultsData, 'bar', {indexAxis: 'y'}));
-
-            const gameTypesCtx = document.getElementById('gameTypesChart').getContext('2d');
-            new Chart(gameTypesCtx, config(gameTypesData, 'bar', {indexAxis: 'y'}));
+            .catch(error => console.error('Error fetching data:', error));
         });
         const data = {{ data | tojson }};
         
