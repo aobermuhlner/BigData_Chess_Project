@@ -5,8 +5,8 @@ from stockfish import Stockfish
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import time
 import numpy as np
-from sklearn.linear_model import LogisticRegression
 import joblib
+import matplotlib.pyplot as plt
 
 def load_game_data(file_name):
     games = pd.read_csv(f"../../../data/processed/{file_name}.csv")
@@ -94,7 +94,7 @@ def build_stored_game_analysis(game, move_number, prev_evaluation, stockfish, ev
 
     fen = board.fen()
     row['fen'] = fen
-    row['url'] = getattr(game.headers, "_tag_roster", {}).get("Site", "") + f"#{move_number}"
+ #   row['url'] = getattr(game.headers, "_tag_roster", {}).get("Site", "") + f"#{move_number}"
 
     if fen in evaluations_cache:
         evaluation_value = evaluations_cache[fen]
@@ -116,43 +116,39 @@ def analyze_games(chunk, stockfish_path, depth, skill_level):
     logistic_model = load_logistic_regression_model()
 
     all_game_analysis = []
-    for game in chunk.itertuples(index=False):  # Make sure to set index=False if you don't want the index within the tuple
+    for game in chunk.itertuples(index=False):
         game_analysis = []
         prev_evaluation = 0
         move_number = 1
-        middle_game_reached = False
 
         while move_number <= len(game.moves):
             analysis_result, prev_evaluation = build_stored_game_analysis(game, move_number, prev_evaluation, stockfish, evaluations_cache)
-            game_analysis.append(analysis_result)
+            analysis_result['move_number'] = move_number
+            analysis_result['game_stage'] = 'opening'  # Default to opening
 
-            # Convert FEN to input tensor for logistic regression model
             input_tensor = fen_to_input(analysis_result['fen'])
-            # Aggregate the input_tensor into a 1D array of 6 features as required by the model
             num_pieces = np.sum(input_tensor[:, :, :12])
             castling_rights = np.sum(input_tensor[:, :, 12:16], axis=(0, 1))
             side_to_move = np.sum(input_tensor[:, :, 16])
-
             model_input = np.concatenate(([num_pieces], castling_rights, [side_to_move]))
 
             classification = logistic_model.predict([model_input])[0]
-
-
-            if classification == 0:  # If classified as middle game
-                middle_game_reached = True
-                for extra_move in range(1, 5):  # Evaluate 4 more moves
-                    if move_number + extra_move <= len(game.moves):
-                        extra_move_number = move_number + extra_move
-                        extra_analysis_result, prev_evaluation = build_stored_game_analysis(game, extra_move_number, prev_evaluation, stockfish, evaluations_cache)
-                        game_analysis.append(extra_analysis_result)
-                break  # Stop the loop after evaluating the extra moves
-
+            if classification == 0:
+                analysis_result['game_stage'] = 'middle_game'
+                # Optionally break if this is your desired logic
+            game_analysis.append(analysis_result)
             move_number += 1
 
-        all_game_analysis.append(pd.DataFrame(game_analysis).set_index("move_number"))
+        # Ensure that a DataFrame is created even if no moves are analyzed
+        if not game_analysis:
+            game_analysis.append({'move_number': None, 'game_stage': 'N/A'})
+        df = pd.DataFrame(game_analysis)
+        df.set_index('move_number', inplace=True)
+        all_game_analysis.append(df)
+
     return all_game_analysis
 
-import matplotlib.pyplot as plt
+
 
 def parallel_game_analysis(games, stockfish_path, depth, skill_level, workers):
     chunk_size = len(games) // workers  # Or determine dynamically based on the number of CPUs
@@ -170,19 +166,61 @@ def save_results_to_json(results, file_path):
     with open(file_path, 'w') as file:
         json.dump(results, file, indent=4)
 
-if __name__ == "__main__":
-    file_name = "apendra_games"
-    stockfish_path = "C:/Users/aober/Documents/Data_Science_Studium/4Semester/BigData/stockfish/stockfish-windows-x86-64-avx2.exe"
-
-    n_games = 19  # len(games)
+def get_analyzed_games(games):
+    # Internal parameters change stockfish path to yours and worker to your core amount
+    n_games = len(games)
     skill_level = 1
     depth = 1
+    num_threads = 8  # Number of threads for parallel processing
+    stockfish_path = "C:/Users/aober/Documents/Data_Science_Studium/4Semester/BigData/stockfish/stockfish-windows-x86-64-avx2.exe"
 
-    games = load_game_data(file_name)
-    games = games.iloc[:n_games]
-    start_time = time.time()
+    games = games[:n_games]
+    games.loc[:, 'moves'] = games['moves'].apply(lambda x: x.split() if isinstance(x, str) else x)
 
-    results = parallel_game_analysis(games, stockfish_path, depth, skill_level, 4)
-    print(results)
-   # json.dump(results, indent=4)
+    results = parallel_game_analysis(games, stockfish_path, depth, skill_level, num_threads)
+    return results
 
+
+
+def plot_transition_distribution(all_game_analysis):
+    # Extracting the move number for each game where the stage changes to middle game
+    transition_moves = []
+    for game_df in all_game_analysis:
+        if 'game_stage' in game_df.columns:
+            middle_game_start = game_df[game_df['game_stage'] == 'middle_game'].index.min()
+            if middle_game_start is not None:
+                transition_moves.append(middle_game_start)
+
+    # Convert to a DataFrame for easier handling
+    transition_df = pd.DataFrame(transition_moves, columns=['transition_move'])
+
+    # Determine the range of move numbers for setting bins
+    min_move = transition_df['transition_move'].min()
+    max_move = transition_df['transition_move'].max()
+    bins = range(min_move, max_move + 2)  # +2 to include the last move number
+
+    # Plotting the distribution of transition moves
+    plt.figure(figsize=(15, 6))  # Adjusted for better visibility of individual bars
+    transition_df['transition_move'].hist(bins=bins, alpha=0.75, edgecolor='black')
+    plt.title('Distribution of Opening to Middle Game Transition Moves')
+    plt.xlabel('Transition Move Number')
+    plt.ylabel('Frequency of Games')
+    plt.xticks(bins)  # Set x-ticks to match the bins
+    plt.grid(True)
+    plt.show()
+
+
+if __name__ == "__main__":
+    file_name = "../../../data/pipeline_test/processed_games.json"
+    with open(file_name, 'r') as file:
+        games = json.load(file)
+      #  games = data['games']
+
+    # Convert games to a pandas DataFrame
+    games = pd.DataFrame(games)
+    analyzed_games = get_analyzed_games(games)
+
+    output_file_path = "../../../data/pipeline_test/analyzed_positions.json"
+    games_json = [game.to_json(orient='records') for game in analyzed_games]
+    with open(output_file_path, 'w') as file:
+        json.dump(games_json, file, indent=4)

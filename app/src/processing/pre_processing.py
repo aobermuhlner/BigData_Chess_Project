@@ -51,4 +51,4 @@ def test_shortenGameMeta():
     with open('../../../data/pipeline_test/processed_games.json', 'w') as outfile:
         json.dump(shortened_games, outfile, indent=4)
     # Print the output for inspection
-    print(json.dumps(shortened_games[:3], indent=4)) 
+    print(json.dumps(shortened_games[:3], indent=4))
