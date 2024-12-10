@@ -169,8 +169,8 @@ def save_results_to_json(results, file_path):
 def get_analyzed_games(games):
     # Internal parameters change stockfish path to yours and worker to your core amount
     n_games = len(games)
-    skill_level = 1
-    depth = 1
+    skill_level = 15
+    depth = 15
     num_threads = 8  # Number of threads for parallel processing
     stockfish_path = "C:/Users/aober/Documents/Data_Science_Studium/4Semester/BigData/stockfish/stockfish-windows-x86-64-avx2.exe"
 
@@ -197,11 +197,13 @@ def plot_transition_distribution(all_game_analysis):
     # Determine the range of move numbers for setting bins
     min_move = transition_df['transition_move'].min()
     max_move = transition_df['transition_move'].max()
-    bins = range(min_move, max_move + 2)  # +2 to include the last move number
+    bins = range(0, 43)  # +2 to include the last move number
 
     # Plotting the distribution of transition moves
-    plt.figure(figsize=(15, 6))  # Adjusted for better visibility of individual bars
-    transition_df['transition_move'].hist(bins=bins, alpha=0.75, edgecolor='black')
+    fig, ax = plt.subplots(figsize=(15, 6))  # Adjusted for better visibility of individual bars
+    ax.set_facecolor('beige')
+    fig.patch.set_facecolor('beige')
+    transition_df['transition_move'].hist(bins=bins, alpha=0.75, edgecolor='black', color='#003f5c', ax=ax)
     plt.title('Distribution of Opening to Middle Game Transition Moves')
     plt.xlabel('Transition Move Number')
     plt.ylabel('Frequency of Games')
